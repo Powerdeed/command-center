@@ -144,7 +144,7 @@ body {
 
 /********** PAGE STYLES **********/
 .uniform-page-display {
-  @apply p-5 flex flex-col gap-5;
+  @apply py-5 pl-70 pr-5 flex flex-col gap-5;
 }
 
 /********** TEXT STYLES **********/

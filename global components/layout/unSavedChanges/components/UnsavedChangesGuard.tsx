@@ -1,7 +1,8 @@
 "use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import useUnsavedChangesGuard from "../hooks/useUnsavedChangesGuard";
+
+import useUnsavedChangesGuard from "@global components/layout/unSavedChanges/hooks/useUnsavedChangesGuard";
 
 export default function UnsavedChangesGuard() {
   const { noticeText, noticeVisible } = useUnsavedChangesGuard();

@@ -1,31 +1,26 @@
 "use client";
 
-import { useCallback, useContext, useEffect, useRef } from "react";
-import {
-  globalContext,
-  UnsavedChangesNoticeText,
-} from "../context/GlobalContext";
-import { DEFAULT_UNSAVED_CHANGES_NOTICE } from "../constants/unsavedChangesNotice";
+import { useCallback, useEffect, useRef } from "react";
+
+import { DEFAULT_UNSAVED_CHANGES_NOTICE } from "@global components/layout/unSavedChanges/constants/unsavedChangesNotice";
+import { UnsavedChangesNoticeText } from "@global components/layout/unSavedChanges/types/unsavedChanges.types";
+import useUnsavedChangesStates from "@global components/layout/unSavedChanges/hooks/useUnsavedChangesStates";
 
 const NOTICE_DURATION = 3500;
 
 export default function useUnsavedChangesGuard() {
-  const globalStates = useContext(globalContext);
+  const unsavedChangesStates = useUnsavedChangesStates();
   const noticeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const guardedHistoryUrlRef = useRef("");
 
-  if (!globalStates) {
-    throw new Error("Global Context context must be within a provider.");
-  }
-
-  const hasUnsavedChanges = globalStates.unsavedChanges;
+  const hasUnsavedChanges = unsavedChangesStates.unsavedChanges;
 
   const {
     unsavedChangesNoticeText,
     unsavedChangesNoticeVisible,
     setUnsavedChangesNoticeText,
     setUnsavedChangesNoticeVisible,
-  } = globalStates;
+  } = unsavedChangesStates;
 
   const showNotice = useCallback(
     (noticeText?: Partial<UnsavedChangesNoticeText>) => {

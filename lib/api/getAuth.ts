@@ -1,4 +1,4 @@
-import { User } from "@app/profile";
+import { User } from "@/globals";
 
 export const getAuth = () => {
   return {

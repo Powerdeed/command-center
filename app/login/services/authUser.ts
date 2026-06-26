@@ -3,7 +3,7 @@ import {
   User,
   UserCredentials,
   UserSession,
-} from "@app/profile";
+} from "@/globals";
 import { getAuth } from "@lib/api/getAuth";
 import { api } from "@lib/api/axios";
 import { apiRequest } from "@lib/api/apiRequest";

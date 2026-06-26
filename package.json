@@ -14,6 +14,9 @@
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
+    "axios": "^1.18.1",
+    "draftify": "^0.1.4",
+    "draftify-react": "^0.3.4",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"

@@ -1,0 +1,40 @@
+{
+  "NAVIGATION_OPTIONS": {
+    "Command Overview": {
+      "IconPrefix": "fas",
+      "IconName": "sliders"
+    },
+    "App Launcher": {
+      "IconPrefix": "fas",
+      "IconName": "arrow-up-right-from-square"
+    },
+    "Approvals": {
+      "IconPrefix": "fas",
+      "IconName": "check-double"
+    },
+    "Tasks": {
+      "IconPrefix": "fas",
+      "IconName": "list-check"
+    },
+    "Activity": {
+      "IconPrefix": "fas",
+      "IconName": "chart-line"
+    },
+    "Reports": {
+      "IconPrefix": "far",
+      "IconName": "file-lines"
+    },
+    "Security & Access": {
+      "IconPrefix": "fas",
+      "IconName": "shield-halved"
+    },
+    "System Health": {
+      "IconPrefix": "far",
+      "IconName": "hard-drive"
+    },
+    "Settings": {
+      "IconPrefix": "fas",
+      "IconName": "gear"
+    }
+  }
+}

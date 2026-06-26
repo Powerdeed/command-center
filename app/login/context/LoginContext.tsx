@@ -1,6 +1,6 @@
 "use client";
 
-import { UserCredentials } from "@app/profile";
+import { UserCredentials } from "@/globals";
 import { createContext, Dispatch } from "react";
 
 type LoginState = {
