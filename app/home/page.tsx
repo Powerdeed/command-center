@@ -6,6 +6,7 @@ import GreetingPrompts from "./components/GreetingPrompts";
 import AppCard from "./components/AppCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Buttonize } from "@global components/ui/Button";
+import OverviewCard from "./components/OverviewCard";
 
 export default function Home() {
   const { globalStates } = useGlobals();
@@ -36,7 +37,16 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-4 ">
+      <div className="grid grid-cols-6 gap-4">
+        <OverviewCard />
+        <OverviewCard />
+        <OverviewCard />
+        <OverviewCard />
+        <OverviewCard />
+        <OverviewCard />
+      </div>
+
+      <div className="grid grid-cols-4 gap-4">
         <AppCard />
         <AppCard />
         <AppCard />

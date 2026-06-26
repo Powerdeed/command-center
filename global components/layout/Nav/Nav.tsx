@@ -11,7 +11,10 @@ export default function Nav() {
 
       <ul className="flex flex-col gap-5 text-style__small-text">
         {Object.entries(NAVIGATION_OPTIONS).map(([nav, icon], i) => (
-          <div key={i} className="flex gap-2.5">
+          <div
+            key={i}
+            className="flex gap-2.5 cursor-pointer p-3 rounded-[10px] duration-150 hover:bg-(--secondary-blue) hover:text-white"
+          >
             <FontAwesomeIcon
               icon={[
                 icon["IconPrefix"] as IconPrefix,
