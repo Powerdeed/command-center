@@ -5,9 +5,9 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 
-import Button from "@/global components/ui/Button";
-import Loader from "@global components/ui/Loader";
-import { SectionTitle } from "@global components/ui/Title";
+import Button from "@global-components/ui/Button";
+import Loader from "@global-components/ui/Loader";
+import { SectionTitle } from "@global-components/ui/Title";
 
 import useLogin from "../hooks/useLogin";
 

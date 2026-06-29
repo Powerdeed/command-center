@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { GlobalProvider } from "@/globals";
-import Nav from "@global components/layout/Nav/Nav";
+import SideBar from "@global-components/layout/SideBar/SideBar";
 import {
   UnsavedChangesGuard,
   UnsavedChangesProvider,
-} from "@global components/layout/unSavedChanges";
+} from "@global-components/layout/unSavedChanges";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -49,11 +49,11 @@ export default function RootLayout({
       <body
         className={`relative ${plusJakartaSans.variable} ${openSans.variable} antialiased flex flex-col min-h-screen`}
       >
-        <Nav />
         <GlobalProvider>
           <UnsavedChangesProvider>
-            {children}
+            <SideBar />
 
+            {children}
             <UnsavedChangesGuard />
           </UnsavedChangesProvider>
         </GlobalProvider>

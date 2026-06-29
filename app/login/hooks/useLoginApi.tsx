@@ -38,7 +38,7 @@ export default function useLoginApi() {
       localStorage.setItem("refreshToken", data.refreshToken);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      router.push("/dashboard-overview");
+      router.push("/command-overview");
     } catch (err: unknown) {
       if (err instanceof ApiError) {
         setError(err.message);

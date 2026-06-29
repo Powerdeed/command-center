@@ -4,7 +4,7 @@ import { ReactNode, useState } from "react";
 
 import { globalContext } from "./GlobalContext";
 import { User } from "../types/user.type";
-import "@/global components/icons";
+import "@global-components/icons";
 
 export default function GlobalProvider({ children }: { children: ReactNode }) {
   const [sideBarOpen, setSideBarOpen] = useState(true);

@@ -1,11 +1,11 @@
 "use client";
 
-import { SectionTitle } from "@global components/ui/Title";
+import { SectionTitle } from "@global-components/ui/Title";
 import useForgotPassword from "../hooks/useForgotPassword";
 import useInputCode from "../hooks/useInputChange";
 import { CODE_DIGITS_NUMBER } from "../constants/numberOfDigitsInCode";
-import Button, { ButtonLight } from "@global components/ui/Button";
-import Loader from "@global components/ui/Loader";
+import Button, { ButtonLight } from "@global-components/ui/Button";
+import Loader from "@global-components/ui/Loader";
 
 export default function VerifyEmail() {
   const { state, actions } = useForgotPassword();

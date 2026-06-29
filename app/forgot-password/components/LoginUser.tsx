@@ -1,8 +1,8 @@
 "use client";
 
-import Button from "@global components/ui/Button";
-import Loader from "@global components/ui/Loader";
-import { SectionTitle } from "@global components/ui/Title";
+import Button from "@global-components/ui/Button";
+import Loader from "@global-components/ui/Loader";
+import { SectionTitle } from "@global-components/ui/Title";
 
 import useForgotPassword from "../hooks/useForgotPassword";
 
