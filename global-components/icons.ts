@@ -22,7 +22,6 @@ import {
   faFolder,
   faNewspaper,
   faImages,
-  faCalendar,
   faListCheck,
   faMagnifyingGlass,
   faSuitcase,
@@ -52,7 +51,9 @@ import {
   faArrowUpRightFromSquare,
   faCheckDouble,
   faTableCells,
+  faBorderAll,
   faFilter,
+  faEllipsisVertical,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -68,6 +69,7 @@ import {
   faThumbsDown,
   faHardDrive,
   faFileLines,
+  faCalendar,
 } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
@@ -134,6 +136,9 @@ library.add(
   faArrowUpRightFromSquare,
   faCheckDouble,
   faTableCells,
+  faBorderAll,
   faFilter,
   faFileLines,
+  faCalendar,
+  faEllipsisVertical,
 );

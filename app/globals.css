@@ -209,7 +209,7 @@ body {
 }
 
 .containerize {
-  @apply w-fit flex items-center gap-2 p-1 border border-(--terciary-grey)/30 rounded-[10px];
+  @apply w-fit flex items-center gap-2 py-1 px-2 border border-(--terciary-grey)/30 rounded-[10px];
 }
 
 .input-style {
@@ -247,4 +247,8 @@ body {
 
 .selector-dropdown-option {
   @apply flex justify-between p-2 rounded-[10px] duration-150 hover:bg-(--secondary-grey)/30 cursor-pointer;
+}
+
+.shadow-on-hover {
+  @apply duration-300 hover:shadow-[0_0_8px_2px_var(--terciary-grey)];
 }

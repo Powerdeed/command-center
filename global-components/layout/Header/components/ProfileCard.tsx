@@ -12,7 +12,7 @@ export default function ProfileCard() {
   const { user } = globalStates;
 
   return (
-    <div className="relative p-2.5 md:p-5 flex max-[1100px]:flex-col gap-2.5 md:gap-5 bg-white border border-(--terciary-grey) rounded-[10px] min-w-fit duration-300 hover:shadow-[0_0_8px_2px_var(--terciary-grey)]">
+    <div className="relative p-2.5 md:p-5 flex max-[1100px]:flex-col gap-2.5 md:gap-5 bg-white border border-(--terciary-grey) rounded-[10px] min-w-fit shadow-on-hover (--terciary-grey)]">
       <div className="w-fit h-full grid">
         {user?.profile?.avatarUrl && (
           <Image src={user?.profile?.avatarUrl} alt="" />

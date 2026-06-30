@@ -4,3 +4,6 @@ export * from "./AppLauncher";
 
 // components
 export * from "./components/AppCard";
+
+// types
+export * from "./types/AppData";

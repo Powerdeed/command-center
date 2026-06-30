@@ -7,8 +7,6 @@ import { useRouter } from "next/navigation";
 // utils
 import { convertLinkToLabel, useGlobals } from "@globals";
 
-// constants
-
 // features
 import { Activity } from "@features/activity";
 import { AppLauncher } from "@features/app-launcher";
@@ -19,12 +17,12 @@ import { SecurityAndAccess } from "@features/security&access";
 import { Settings } from "@features/settings";
 import { SystemHealth } from "@features/system-health";
 import { Tasks } from "@features/tasks";
-import { NavLabels } from "@global-components/layout/SideBar";
+import { FeatureOptions } from "@lib";
 
 export default function Section({
   params,
 }: {
-  params: Promise<{ section: NavLabels }>;
+  params: Promise<{ section: FeatureOptions }>;
 }) {
   const { section } = use(params);
   const sectionLabel = convertLinkToLabel(decodeURIComponent(section));
@@ -36,7 +34,7 @@ export default function Section({
     if (!token) router.push("/login");
   }, [router]);
 
-  const sectionMap: Record<NavLabels, React.ReactNode> = {
+  const sectionMap: Record<FeatureOptions, React.ReactNode> = {
     "Command Overview": <Overview />,
     "App Launcher": <AppLauncher />,
     Approvals: <Approvals />,

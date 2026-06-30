@@ -12,5 +12,3 @@ export const ACCESS_SORT_OPTIONS = [
   "Admin",
   "Restricted",
 ];
-
-export const FILTERS = [""];

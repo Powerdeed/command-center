@@ -2,6 +2,7 @@
 
 import FeatureTitle from "@global-components/ui/FeatureTitle";
 import Sorter from "./Sorter";
+import AppDisplay from "./AppCard";
 
 export default function AppLauncherView() {
   return (
@@ -9,6 +10,8 @@ export default function AppLauncherView() {
       <FeatureTitle />
 
       <Sorter />
+
+      <AppDisplay />
     </div>
   );
 }

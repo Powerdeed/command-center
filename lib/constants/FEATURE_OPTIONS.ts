@@ -55,4 +55,4 @@ export const FEATURE_OPTIONS = [
   },
 ];
 
-export type NavLabels = (typeof FEATURE_OPTIONS)[number]["label"];
+export type FeatureOptions = (typeof FEATURE_OPTIONS)[number]["label"];
