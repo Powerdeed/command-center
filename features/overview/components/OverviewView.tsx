@@ -2,17 +2,18 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Header from "@global-components/layout/Header/Header";
-import { Buttonize } from "@global-components/ui/Button";
+import Header from "@features/overview/components/Header/Header";
 import GreetingPrompts from "./GreetingPrompts";
 import OverviewCard from "./OverviewCard";
 // import AppCard from "@features/app-launcher/components/AppCard";
 import useHome from "../hooks/useHome";
 
 import { useGlobals } from "@/globals";
-import AppDisplay from "@features/app-launcher/components/AppCard";
+import AppDisplay from "@features/app-launcher/components/AppDisplay";
+import useAppLauncher from "@features/app-launcher/hooks/useAppLauncher";
 
 export default function OverviewView() {
+  const { state } = useAppLauncher();
   const { globalStates } = useGlobals();
   const { user } = globalStates;
   const { actions } = useHome();
@@ -34,13 +35,15 @@ export default function OverviewView() {
         </div>
 
         <div className="flex gap-px items-center text-style__subheading">
-          <Buttonize className="hover:bg-(--terciary-grey) hover:rounded-[10px] p-1">
-            <FontAwesomeIcon icon={["fas", "table-cells"]} />
-          </Buttonize>
+          <FontAwesomeIcon
+            icon={["fas", "table-cells"]}
+            className="buttonize hover:bg-(--terciary-grey) hover:rounded-[10px] p-2"
+          />
           |
-          <Buttonize className="hover:bg-(--terciary-grey) hover:rounded-[10px] p-1">
-            <FontAwesomeIcon icon={["fas", "border-all"]} />
-          </Buttonize>
+          <FontAwesomeIcon
+            icon={["fas", "border-all"]}
+            className="buttonize hover:bg-(--terciary-grey) hover:rounded-[10px] p-2"
+          />
         </div>
       </div>
 
@@ -61,7 +64,7 @@ export default function OverviewView() {
           App Launcher
         </div>
 
-        <AppDisplay />
+        <AppDisplay renderAppInfo={state.setSelectedApp} />
       </div>
     </main>
   );

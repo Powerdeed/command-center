@@ -1,11 +1,11 @@
 "use client";
 
-import { ButtonLight } from "@global-components/ui/Button";
-import { useGlobals } from "@globals";
-import { FontAwesomeIcon } from "@node_modules/@fortawesome/react-fontawesome/dist";
-
 import Image from "next/image";
-import { getAbbreviation } from "../utils/getAbbreviation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import Button from "@global-components/ui/Button";
+import { useGlobals } from "@globals";
+import { getAbbreviation } from "../../utils/getAbbreviation";
 
 export default function ProfileCard() {
   const { globalStates } = useGlobals();
@@ -41,13 +41,14 @@ export default function ProfileCard() {
           {user?.role || "User role"}
         </div>
 
-        <ButtonLight
+        <Button
           buttonText="Edit Profile"
+          buttonType="light"
           clickAction={() => {}}
           className="w-fit"
         >
           <FontAwesomeIcon icon={["far", "pen-to-square"]} />
-        </ButtonLight>
+        </Button>
       </div>
     </div>
   );

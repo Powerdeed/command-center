@@ -3,23 +3,39 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { appsData } from "../services/appsData";
 import { AppData } from "../types/AppData";
-import Button, { ButtonLight } from "@global-components/ui/Button";
+import Button from "@global-components/ui/Button";
+import { Dispatch, SetStateAction } from "@node_modules/@types/react";
 
-export default function AppDisplay() {
+export default function AppDisplay({
+  renderAppInfo,
+}: {
+  renderAppInfo: Dispatch<SetStateAction<AppData | null>>;
+}) {
   return (
     <div className="grid grid-cols-2 gap-5">
       {appsData.map((appData) => (
-        <AppCard key={appData.id} appData={appData} />
+        <AppCard
+          key={appData.id}
+          appData={appData}
+          renderAppInfo={renderAppInfo}
+        />
       ))}
     </div>
   );
 }
 
-export function AppCard({ appData }: { appData: AppData }) {
+export function AppCard({
+  renderAppInfo,
+  appData,
+}: {
+  appData: AppData;
+  renderAppInfo: Dispatch<SetStateAction<AppData | null>>;
+}) {
   return (
-    <div className="feature-container-vertical min-w-80 min-h-60 shadow-on-hover">
+    <div className="feature-container-vertical min-h-60 shadow-on-hover">
       <div className="horizontal-layout">
         <div className="border w-10 h-10"></div>
+
         <div className="flex-1">
           <div className="horizontal-layout">
             <div className="text-style__subheading text-(--primary-blue)">
@@ -34,7 +50,9 @@ export function AppCard({ appData }: { appData: AppData }) {
           <div className="text-style__small-text">{appData.description}</div>
         </div>
 
-        <FontAwesomeIcon icon={["fas", "ellipsis-vertical"]} />
+        <div className="buttonize hover:bg-(--terciary-grey) hover:rounded-[10px] p-1">
+          <FontAwesomeIcon icon={["fas", "ellipsis-vertical"]} />
+        </div>
       </div>
 
       <div className="vertical-layout__inner mt-auto">
@@ -64,10 +82,11 @@ export function AppCard({ appData }: { appData: AppData }) {
             <FontAwesomeIcon icon={["fas", "arrow-up-right-from-square"]} />
           </Button>
 
-          <ButtonLight
+          <Button
             buttonText="Details"
+            buttonType="light"
             className="w-full"
-            clickAction={() => {}}
+            clickAction={() => renderAppInfo(appData)}
           />
         </div>
       </div>

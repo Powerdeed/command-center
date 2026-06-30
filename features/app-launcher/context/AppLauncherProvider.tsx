@@ -2,6 +2,8 @@
 
 import { ReactNode, useState } from "react";
 import { appLauncherSorterContext } from "./AppLauncherSorterContext";
+import { appLauncherAppDataContext } from "./AppLauncherAppDataContext";
+import { AppData } from "../types/AppData";
 
 export default function AppLauncherProvider({
   children,
@@ -10,6 +12,7 @@ export default function AppLauncherProvider({
 }) {
   const [selectedStatus, setSelectedStatus] = useState("");
   const [selectedAccess, setSelectedAccess] = useState("");
+  const [selectedApp, setSelectedApp] = useState<AppData | null>(null);
 
   return (
     <appLauncherSorterContext.Provider
@@ -20,7 +23,11 @@ export default function AppLauncherProvider({
         setSelectedAccess,
       }}
     >
-      {children}
+      <appLauncherAppDataContext.Provider
+        value={{ selectedApp, setSelectedApp }}
+      >
+        {children}
+      </appLauncherAppDataContext.Provider>
     </appLauncherSorterContext.Provider>
   );
 }

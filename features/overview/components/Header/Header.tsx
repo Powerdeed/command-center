@@ -3,8 +3,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Logo from "@global-components/ui/Logo";
-import ProfileCard from "./components/ProfileCard";
-import Button, { ButtonLight } from "@global-components/ui/Button";
+import ProfileCard from "./ProfileCard";
+import Button from "@global-components/ui/Button";
 
 import { getDateFormatted } from "@globals";
 import SearchBar from "@global-components/ui/SearchBar";
@@ -39,7 +39,11 @@ export default function Header() {
 
         <div className="flex max-[1100px]:grid gap-2.5 md:gap-1.5 z-1">
           <Button buttonText="&#10140; View All Apps" />
-          <ButtonLight buttonText="System Logs" clickAction={() => {}} />
+          <Button
+            buttonText="System Logs"
+            buttonType="light"
+            clickAction={() => {}}
+          />
           <SearchBar
             val=""
             placeholder="Search Apps, tasks, users or resources"

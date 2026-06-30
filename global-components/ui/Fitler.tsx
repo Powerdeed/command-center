@@ -63,7 +63,7 @@ export default function Fitler({ dropdownWidth }: { dropdownWidth?: string }) {
   return (
     <div
       ref={selectorRef}
-      className="relative  horizontal-layout text-style__small-text"
+      className="relative horizontal-layout text-style__small-text"
     >
       <div
         className="containerize hover:bg-(--terciary-grey)/30 rounded-[10px] p-1 cursor-pointer"

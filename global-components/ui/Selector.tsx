@@ -46,7 +46,7 @@ export default function Selector({
   return (
     <div
       ref={selectorRef}
-      className="selector text-style__body"
+      className="selector text-style__body z-1"
       onClick={() => setIsClicked((prev) => !prev)}
     >
       <div className="text-style__body--bold flex items-center">
@@ -58,11 +58,11 @@ export default function Selector({
       </div>
 
       {isClicked && (
-        <ul className="selector-dropdown w-full">
+        <ul className="selector-dropdown w-full text-style__small-text">
           {options.map((option) => (
             <li
               key={option}
-              className={`selector-dropdown-option ${option === selectedOption && "bg-(--terciary-grey)/30"}`}
+              className={`selector-dropdown-option ${option === selectedOption ? "bg-(--terciary-grey)/30" : ""}`}
               onClick={() => selectOption(option)}
             >
               {option}
