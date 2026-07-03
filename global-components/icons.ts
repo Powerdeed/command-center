@@ -3,6 +3,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faBars,
   faXmark,
+  faCircleXmark,
   faAngleUp,
   faAngleDown,
   faAngleLeft,
@@ -52,8 +53,10 @@ import {
   faCheckDouble,
   faTableCells,
   faBorderAll,
-  faFilter,
+  faSort,
   faEllipsisVertical,
+  faStar,
+  faPeopleGroup,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -70,11 +73,13 @@ import {
   faHardDrive,
   faFileLines,
   faCalendar,
+  faClock,
 } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
   faBars,
   faXmark,
+  faCircleXmark,
   faAngleUp,
   faAngleDown,
   faAngleLeft,
@@ -137,8 +142,11 @@ library.add(
   faCheckDouble,
   faTableCells,
   faBorderAll,
-  faFilter,
+  faSort,
   faFileLines,
   faCalendar,
   faEllipsisVertical,
+  faClock,
+  faStar,
+  faPeopleGroup,
 );

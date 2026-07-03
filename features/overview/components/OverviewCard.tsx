@@ -1,13 +1,20 @@
 "use client";
 
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function OverviewCard({
   title,
   value,
   actions,
+  icon,
+  color,
 }: {
   title: string;
   value: string;
   actions: string;
+  icon: string[];
+  color: string;
 }) {
   return (
     <div
@@ -16,7 +23,10 @@ export default function OverviewCard({
     >
       <div className="text-style__body">{title}</div>
       <div className="text-style__heading flex-1">{value}</div>
-      <div className="text-style__small-text">{actions}</div>
+      <div className={`horizontal-layout text-style__small-text ${color}`}>
+        <FontAwesomeIcon icon={icon as IconProp} />
+        <div>{actions}</div>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 // components
-export { default as Profile } from "./components/Profile";
-export * from "./components/Profile";
+export { default as Profile } from "./components/Account";
+export * from "./components/Account";
 export { default as EditorField } from "./components/EditorField";
 export * from "./components/EditorField";
 export { default as ProfileAvatar } from "./components/ProfileAvatar";

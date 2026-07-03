@@ -38,7 +38,7 @@ export default function ProfileEditor({
   };
 
   return (
-    <div className="fixed inset-0 z-20 flex justify-end bg-black/20 pl-65 pt-15">
+    <div className="fixed inset-0 z-20 flex justify-end bg-black/20 pl-65">
       <div
         className="h-full flex-1"
         onClick={closeEditor}
@@ -58,7 +58,7 @@ export default function ProfileEditor({
 
           <button
             type="button"
-            className="grid h-9 w-9 place-items-center rounded-[10px] border border-(--terciary-grey) text-(--primary-grey) duration-200 hover:bg-(--background) hover:text-(--primary-blue)"
+            className="grid h-9 w-9 place-items-center rounded-[10px] border border-(--terciary-grey) text-(--primary-grey) duration-200 hover:bg-background hover:text-(--primary-blue)"
             onClick={closeEditor}
             aria-label="Close profile editor"
           >
@@ -67,7 +67,7 @@ export default function ProfileEditor({
         </div>
 
         <form className="vertical-layout__outer">
-          <div className="feature-container-vertical bg-(--background)">
+          <div className="feature-container-vertical bg-background">
             <div className="flex items-center gap-4">
               <ProfileAvatar
                 initials={initials}
@@ -118,7 +118,7 @@ export default function ProfileEditor({
             <EditorField label="Job title" defaultValue={jobTitle} />
           </div>
 
-          <div className="feature-container-vertical bg-(--background)">
+          <div className="feature-container-vertical bg-background">
             <div>
               <div className="text-style__big-text text-(--primary-blue)">
                 Role Assignment
@@ -139,7 +139,7 @@ export default function ProfileEditor({
             </div>
           </div>
 
-          <div className="feature-container-vertical bg-(--background)">
+          <div className="feature-container-vertical bg-background">
             <div>
               <div className="text-style__big-text text-(--primary-blue)">
                 Operator Bio
@@ -157,7 +157,7 @@ export default function ProfileEditor({
           <div className="sticky bottom-0 -mx-5 mt-2 flex justify-end gap-2.5 border-t border-(--terciary-grey) bg-white p-5">
             <button
               type="button"
-              className="rounded-[10px] border border-(--secondary-blue) bg-white px-4 py-2.5 text-style__small-text text-(--primary-blue) duration-200 hover:bg-(--background)"
+              className="rounded-[10px] border border-(--secondary-blue) bg-white px-4 py-2.5 text-style__small-text text-(--primary-blue) duration-200 hover:bg-background"
               onClick={closeEditor}
             >
               Cancel

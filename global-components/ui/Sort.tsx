@@ -1,12 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Fitler({ dropdownWidth }: { dropdownWidth?: string }) {
-  const options = ["option 1", "option 2"];
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  const [unselectedFilters, setUnSelectedFilters] = useState(options);
+export default function Sort({
+  sortOptions,
+  selectedSortOptions,
+  setSelectedSortOptions,
+  dropdownWidth,
+}: {
+  sortOptions: string[];
+  selectedSortOptions: string[];
+  setSelectedSortOptions: Dispatch<SetStateAction<string[]>>;
+  dropdownWidth?: string;
+}) {
+  const [unselectedSortOptions, setUnSelectedSortOptions] =
+    useState(sortOptions);
   const [isClicked, setIsClicked] = useState(false);
   const selectorRef = useRef<HTMLDivElement>(null);
 
@@ -29,13 +38,13 @@ export default function Fitler({ dropdownWidth }: { dropdownWidth?: string }) {
   }, [isClicked]);
 
   const selectOption = (filter: string) => {
-    setSelectedFilters((prev) => {
+    setSelectedSortOptions((prev) => {
       if (prev.includes(filter)) return prev;
 
       return [...prev, filter];
     });
 
-    setUnSelectedFilters((prev) => {
+    setUnSelectedSortOptions((prev) => {
       if (prev.includes(filter))
         return prev.filter((filterOption) => filterOption !== filter);
 
@@ -46,14 +55,14 @@ export default function Fitler({ dropdownWidth }: { dropdownWidth?: string }) {
   };
 
   const removeFilter = (filter: string) => {
-    setSelectedFilters((prev) => {
+    setSelectedSortOptions((prev) => {
       if (prev.includes(filter))
         return prev.filter((filterOption) => filterOption !== filter);
 
       return [...prev];
     });
 
-    setUnSelectedFilters((prev) => {
+    setUnSelectedSortOptions((prev) => {
       if (prev.includes(filter)) return prev;
 
       return [...prev, filter];
@@ -63,14 +72,14 @@ export default function Fitler({ dropdownWidth }: { dropdownWidth?: string }) {
   return (
     <div
       ref={selectorRef}
-      className="relative horizontal-layout text-style__small-text"
+      className="relative horizontal-layout text-style__body"
     >
       <div
         className="containerize hover:bg-(--terciary-grey)/30 rounded-[10px] p-1 cursor-pointer"
         onClick={() => setIsClicked((prev) => !prev)}
       >
-        <FontAwesomeIcon icon={["fas", "filter"]} />
-        <div>Fitler</div>
+        <FontAwesomeIcon icon={["fas", "sort"]} />
+        <div>Sort</div>
       </div>
 
       <div
@@ -78,7 +87,7 @@ export default function Fitler({ dropdownWidth }: { dropdownWidth?: string }) {
       >
         {isClicked && (
           <ul className={`selector-dropdown`}>
-            {unselectedFilters.map((option) => (
+            {unselectedSortOptions.map((option) => (
               <li
                 key={option}
                 className="selector-dropdown-option"
@@ -91,7 +100,7 @@ export default function Fitler({ dropdownWidth }: { dropdownWidth?: string }) {
         )}
       </div>
 
-      {selectedFilters.map((filter) => (
+      {selectedSortOptions.map((filter) => (
         <div key={filter} className="containerize rounded-[10px] p-1">
           <FontAwesomeIcon
             icon={["fas", "xmark"]}

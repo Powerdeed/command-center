@@ -6,7 +6,7 @@ export default function SignalCard({
   value: string;
 }) {
   return (
-    <div className="rounded-[10px] border border-(--terciary-grey) bg-(--background) p-3">
+    <div className="rounded-[10px] border border-(--terciary-grey) bg-background p-3">
       <div className="text-style__small-text text-(--primary-grey)">
         {label}
       </div>

@@ -50,7 +50,7 @@ export default function useLoginApi() {
 
   useEffect(() => {
     const { token } = getAuth();
-    if (token) router.push("/dashboard-overview");
+    if (token) router.push("/command-overview");
   }, [router]);
 
   return { router, handleLogin };

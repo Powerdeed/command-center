@@ -226,7 +226,7 @@ body {
 }
 
 .containerize {
-  @apply w-fit flex items-center gap-2 py-1 px-2 border border-(--terciary-grey)/30 rounded-[10px];
+  @apply w-fit flex items-center gap-2 py-1 px-2 border rounded-[10px];
 }
 
 .buttonize {
@@ -259,7 +259,7 @@ body {
 }
 
 .selector {
-  @apply relative p-2 min-w-40 bg-(--secondary-grey)/50 rounded-[10px] cursor-pointer;
+  @apply relative p-2 min-w-40 bg-(--terciary-grey)/30 rounded-[10px] cursor-pointer;
 }
 
 .selector-dropdown {

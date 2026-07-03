@@ -1,11 +1,11 @@
 "use client";
 
 import { useContext } from "react";
-import { appLauncherSorterContext } from "../context/AppLauncherSorterContext";
+import { appLauncherSearchSortFilterContext } from "../context/AppLauncherSearchSortFilterContext";
 import { appLauncherAppDataContext } from "../context/AppLauncherAppDataContext";
 
 export default function useAppLauncherState() {
-  const appLauncherSorterState = useContext(appLauncherSorterContext);
+  const appLauncherSorterState = useContext(appLauncherSearchSortFilterContext);
   const appLauncherAppDataState = useContext(appLauncherAppDataContext);
 
   if (!appLauncherSorterState || !appLauncherAppDataState)

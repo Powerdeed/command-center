@@ -37,6 +37,7 @@ export default function Button({
       type={type}
       className={`
         ${className}
+        relative
         buttonize
         py-3 px-4 rounded-[10px] text-style__small-text
         disabled:cursor-not-allowed disabled:border-(--secondary-grey) disabled:bg-(--secondary-grey) disabled:text-white disabled:opacity-70 disabled:hover:bg-(--secondary-grey)

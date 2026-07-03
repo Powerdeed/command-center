@@ -9,8 +9,9 @@ import OverviewCard from "./OverviewCard";
 import useHome from "../hooks/useHome";
 
 import { useGlobals } from "@/globals";
-import AppDisplay from "@features/app-launcher/components/AppDisplay";
+import AppsView from "@features/app-launcher/components/AppsView";
 import useAppLauncher from "@features/app-launcher/hooks/useAppLauncher";
+import AppInfo from "@features/app-launcher/components/AppInfo";
 
 export default function OverviewView() {
   const { state } = useAppLauncher();
@@ -64,7 +65,16 @@ export default function OverviewView() {
           App Launcher
         </div>
 
-        <AppDisplay renderAppInfo={state.setSelectedApp} />
+        <AppsView renderAppInfo={state.setSelectedApp} />
+
+        {state.selectedApp && (
+          <div className="overlay" onClick={() => state.setSelectedApp(null)}>
+            <AppInfo
+              appData={state.selectedApp}
+              cancelWindowFunc={state.setSelectedApp}
+            />
+          </div>
+        )}
       </div>
     </main>
   );

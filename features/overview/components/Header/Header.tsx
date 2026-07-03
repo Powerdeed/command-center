@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Logo from "@global-components/ui/Logo";
@@ -18,7 +19,6 @@ export default function Header() {
         <div className="text-style__small-text text-(--primary-grey) flex gap-2.5 items-center">
           <FontAwesomeIcon icon={["far", "calendar"]} /> {getDateFormatted()}
         </div>
-
         <CirclesDecor
           color="border-(--secondary-blue)/20"
           position="-left-20 -bottom-30"
@@ -38,7 +38,9 @@ export default function Header() {
         />
 
         <div className="flex max-[1100px]:grid gap-2.5 md:gap-1.5 z-1">
-          <Button buttonText="&#10140; View All Apps" />
+          <Link href="/app-launcher">
+            <Button buttonText="&#10140; View All Apps" />
+          </Link>
           <Button
             buttonText="System Logs"
             buttonType="light"

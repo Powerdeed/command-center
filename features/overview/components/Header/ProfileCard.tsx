@@ -1,13 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Button from "@global-components/ui/Button";
 import { useGlobals } from "@globals";
 import { getAbbreviation } from "../../utils/getAbbreviation";
+import useAccount from "@app/account/hooks/useAccount";
 
 export default function ProfileCard() {
+  const { loginActions } = useAccount();
   const { globalStates } = useGlobals();
   const { user } = globalStates;
 
@@ -41,14 +44,25 @@ export default function ProfileCard() {
           {user?.role || "User role"}
         </div>
 
-        <Button
-          buttonText="Edit Profile"
-          buttonType="light"
-          clickAction={() => {}}
-          className="w-fit"
-        >
-          <FontAwesomeIcon icon={["far", "pen-to-square"]} />
-        </Button>
+        <div className="horizontal-layout">
+          <Link href={"/account"}>
+            <Button
+              buttonText="Manage Account"
+              buttonType="light"
+              clickAction={() => {}}
+              className="w-fit"
+            >
+              <FontAwesomeIcon icon={["far", "pen-to-square"]} />
+            </Button>
+          </Link>
+
+          <Button
+            buttonText="Logout"
+            buttonType="red"
+            clickAction={loginActions.handleLogout}
+            className="w-fit"
+          />
+        </div>
       </div>
     </div>
   );

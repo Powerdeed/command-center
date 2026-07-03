@@ -1,9 +1,12 @@
 "use client";
 
+import useAppLauncherSearchFilterSort from "./useAppLauncherSearchFilterSort";
 import useAppLauncherState from "./useAppLauncherState";
 
 export default function useAppLauncher() {
   const state = useAppLauncherState();
 
-  return { state };
+  const searchSortFilter = useAppLauncherSearchFilterSort();
+
+  return { state, appLauncherActions: { ...searchSortFilter } };
 }
