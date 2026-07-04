@@ -13,7 +13,7 @@ export default function useLogin() {
 
       localStorage.clear();
 
-      router.push("https://auth.powerdeed.co.ke/login");
+      router.push("/login");
     } catch (err: unknown) {
       if (err instanceof ApiError) {
         console.error(err.message);
