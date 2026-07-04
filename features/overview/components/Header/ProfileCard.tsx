@@ -16,17 +16,19 @@ export default function ProfileCard() {
 
   return (
     <div className="relative p-2.5 md:p-5 flex max-[1100px]:flex-col gap-2.5 md:gap-5 bg-white border border-(--terciary-grey) rounded-[10px] min-w-fit shadow-on-hover (--terciary-grey)]">
-      <div className="w-fit h-full grid">
-        {user?.profile?.avatarUrl && (
-          <Image src={user?.profile?.avatarUrl} alt="" />
-        )}
+      <div className="max-[1100px]:w-full max-[1100px]:grid max-[1100px]:justify-center">
+        <div className="w-fit h-full grid">
+          {user?.profile?.avatarUrl && (
+            <Image src={user?.profile?.avatarUrl} alt="" />
+          )}
 
-        {/* If no image is available, display the abbreviation of the user's name and style it. */}
-        <div className="relative rounded-full w-40 h-40 bg-(--primary-blue) grid justify-center items-center text-center">
-          <div className="absolute top-2.5 left-2.5 rounded-full w-35 h-35 border border-(--primary-yellow)"></div>
-          <div className="absolute top-5 left-5 rounded-full w-30 h-30 border border-(--secondary-blue)"></div>
-          <div className="text-white text-[40px] font-bold">
-            {getAbbreviation(user?.name || "User")}
+          {/* If no image is available, display the abbreviation of the user's name and style it. */}
+          <div className="relative rounded-full w-40 h-40 bg-(--primary-blue) grid justify-center items-center text-center">
+            <div className="absolute top-2.5 left-2.5 rounded-full w-35 h-35 border border-(--primary-yellow)"></div>
+            <div className="absolute top-5 left-5 rounded-full w-30 h-30 border border-(--secondary-blue)"></div>
+            <div className="text-white text-[40px] font-bold">
+              {getAbbreviation(user?.name || "User")}
+            </div>
           </div>
         </div>
       </div>
