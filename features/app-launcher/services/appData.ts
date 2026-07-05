@@ -1,4 +1,5 @@
 import { AppData } from "../types/AppData";
+import { PERMISSIONS } from "@globals";
 
 export const appsData: AppData[] = [
   {
@@ -8,6 +9,18 @@ export const appsData: AppData[] = [
     description: "Content management and publishing",
     teamsInCharge: ["content", "marketing"],
     yourAccess: "Full Access",
+    requiredPermissions: [
+      PERMISSIONS.CMS_CONTENT_WRITE,
+      PERMISSIONS.CMS_ASSETS_WRITE,
+      PERMISSIONS.CMS_PROJECTS_WRITE,
+      PERMISSIONS.CMS_SERVICES_WRITE,
+    ],
+    readOnlyPermissions: [
+      PERMISSIONS.CMS_CONTENT_READ,
+      PERMISSIONS.CMS_ASSETS_READ,
+      PERMISSIONS.CMS_PROJECTS_READ,
+      PERMISSIONS.CMS_SERVICES_READ,
+    ],
     openTasks: 4,
     liveStatus: "Live",
     recentActivities: [
@@ -46,7 +59,7 @@ export const appsData: AppData[] = [
     },
 
     type: "internal", // workers use day-to-day or for public
-    appUrl: "https://powerdeedtr.co.ke",
+    appUrl: "https://cms.powerdeed.co.ke",
   },
   {
     id: "2",
@@ -55,6 +68,8 @@ export const appsData: AppData[] = [
     description: "General Public application",
     teamsInCharge: ["all"],
     yourAccess: "Full Access",
+    requiredPermissions: [PERMISSIONS.COMMAND_CENTER_APPS_LAUNCH],
+    readOnlyPermissions: [PERMISSIONS.COMMAND_CENTER_APPS_LAUNCH],
     openTasks: 0,
     liveStatus: "Live",
     recentActivities: [],

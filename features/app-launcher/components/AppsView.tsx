@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Button from "@global-components/ui/Button";
-import { AppData } from "../types/AppData";
+import { ACCESS_OPTIONS, AppData } from "../types/AppData";
 import useAppLauncher from "../hooks/useAppLauncher";
 
 export const liveTextStyle: Record<AppData["liveStatus"], string> = {
@@ -15,11 +15,11 @@ export const liveTextStyle: Record<AppData["liveStatus"], string> = {
   Restricted: "text-(--primary-red)",
 };
 
-export const AccessTextStyle: Record<AppData["yourAccess"][number], string> = {
-  "Full Access": "text-(--primary-green)",
-  Admin: "text-(--primary-blue)",
-  ReadOnly: "text-(--primary-yellow)",
-  Restricted: "text-(--primary-red)",
+export const AccessTextStyle: Record<AppData["yourAccess"], string> = {
+  [ACCESS_OPTIONS.FullAccess]: "text-(--primary-green)",
+  [ACCESS_OPTIONS.Admin]: "text-(--primary-blue)",
+  [ACCESS_OPTIONS.ReadOnly]: "text-(--primary-yellow)",
+  [ACCESS_OPTIONS.Restricted]: "text-(--primary-red)",
 };
 
 export default function AppsView({
@@ -79,6 +79,7 @@ export function AppCard({
   const { state } = useAppLauncher();
 
   const [optionsClicked, setOptionsClicked] = useState(false);
+  const canLaunchApp = appData.yourAccess !== ACCESS_OPTIONS.Restricted;
 
   return (
     <div className="feature-container-vertical min-h-60 shadow-on-hover">
@@ -150,16 +151,27 @@ export function AppCard({
         </div>
 
         <div className="horizontal-layout justify-between">
-          <Link
-            href={appData.appUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="w-full"
-          >
-            <Button buttonText="launch" className="w-full">
-              <FontAwesomeIcon icon={["fas", "arrow-up-right-from-square"]} />
+          {canLaunchApp ? (
+            <Link
+              href={appData.appUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full"
+            >
+              <Button buttonText="launch" className="w-full">
+                <FontAwesomeIcon icon={["fas", "arrow-up-right-from-square"]} />
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              buttonText="Restricted"
+              buttonType="light"
+              className="w-full"
+              disabled
+            >
+              <FontAwesomeIcon icon={["fas", "lock"]} />
             </Button>
-          </Link>
+          )}
 
           <Button
             buttonText="Details"

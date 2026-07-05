@@ -11,7 +11,7 @@ import { convertLinkToLabel, useGlobals } from "@globals";
 import { Activity } from "@features/activity";
 import { AppLauncher } from "@features/app-launcher";
 import { Approvals } from "@features/approvals";
-import { Overview } from "@features/overview";
+import { Dashboard } from "@features/dashboard";
 import { Reports } from "@features/reports";
 import { SecurityAndAccess } from "@features/security&access";
 import { Settings } from "@features/settings";
@@ -35,7 +35,7 @@ export default function Section({
   }, [router]);
 
   const sectionMap: Record<FeatureOptions, React.ReactNode> = {
-    "Command Overview": <Overview />,
+    Dashboard: <Dashboard />,
     "App Launcher": <AppLauncher />,
     Approvals: <Approvals />,
     Tasks: <Tasks />,

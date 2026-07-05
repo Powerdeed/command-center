@@ -1,6 +1,6 @@
 "use client";
 
-import useOverviewCard from "./useOverviewCard";
+import useOverviewCard from "./useDashboardCard";
 
 export default function useHome() {
   const overview = useOverviewCard();

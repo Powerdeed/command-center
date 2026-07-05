@@ -1,6 +1,6 @@
 export const FEATURE_OPTIONS = [
   {
-    label: "Command Overview",
+    label: "Dashboard",
     IconPrefix: "fas",
     IconName: "sliders",
     description: "",

@@ -255,7 +255,7 @@ body {
 }
 
 .overlay {
-  @apply fixed pl-70 pr-5 w-full h-full top-0 left-0 flex flex-col justify-center items-center bg-(--terciary-grey)/40 z-2;
+  @apply fixed w-full h-full top-0 left-0 flex flex-col justify-center items-center bg-(--terciary-grey)/40 z-2;
 }
 
 .selector {
