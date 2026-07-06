@@ -5,7 +5,7 @@ export interface User {
   name: string;
   email: string;
   role: UserRole;
-  accessScopes?: UserAccessScope[];
+  permissions?: UserPermission[];
   profile?: UserProfile;
   preferences?: UserPreferences;
   security?: UserSecurity;
@@ -20,19 +20,22 @@ export interface UserCredentials {
   password: string;
 }
 
-export type UserAccessScope =
-  | "dashboard"
-  | "leads"
-  | "services"
-  | "projects"
-  | "websiteContent"
-  | "articles"
-  | "media"
-  | "scheduling"
-  | "reports"
-  | "customization"
-  | "settings"
-  | "users";
+export type UserPermission =
+  | "cms.dashboard.read"
+  | "cms.leads.read"
+  | "cms.content.read"
+  | "cms.content.write"
+  | "cms.assets.read"
+  | "cms.assets.write"
+  | "cms.projects.read"
+  | "cms.projects.write"
+  | "cms.services.read"
+  | "cms.services.write"
+  | "cms.reports.read"
+  | "cms.settings.manage"
+  | "cms.users.manage"
+  | "command-center.apps.launch"
+  | "command-center.permissions.manage";
 
 export type UserThemePreference = "system" | "light" | "dark";
 export type DashboardDensity = "compact" | "comfortable";
@@ -102,7 +105,7 @@ export interface UserRoleGovernance {
 }
 
 export type UserUpdatePayload = Partial<
-  Pick<User, "name" | "email" | "role" | "accessScopes"> & {
+  Pick<User, "name" | "email" | "role" | "permissions"> & {
     profile: UserProfile;
     preferences: UserPreferences;
     security: UserSecurity;

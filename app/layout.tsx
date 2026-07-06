@@ -23,17 +23,19 @@ export const metadata: Metadata = {
     default: "PTR Command Center",
     template: "%s | PTR Command Center", // Template for child pages
   },
-  description: "A command center to edit PTR-Powerdeed website.",
+  description:
+    "A command center to control and regulate PTR platform and systems.",
   keywords: ["Powerdeed", "command center"],
   other: {
     "app-version": "1.0.0",
   },
-  // You can also define specific Open Graph, Twitter, etc. metadata here
+  // You can also define specific Open Graph, WhatsApp url cards, etc. metadata here
   openGraph: {
     title: "PTR Command Center",
-    description: "A command center to edit PTR-Powerdeed website.",
+    description:
+      "A command center to control and regulate PTR platform and systems.",
     type: "website",
-    url: "https://powerdeedtr.co.ke/",
+    url: "https://command.powerdeed.co.ke/",
     siteName: "PTR Command Center",
     locale: "en_US",
   },

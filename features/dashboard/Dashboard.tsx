@@ -1,12 +1,12 @@
 "use client";
 
 import AppLauncherProvider from "@features/app-launcher/context/AppLauncherProvider";
-import OverviewView from "./components/OverviewView";
+import DashboardView from "./components/DashboardView";
 
 export default function Overview() {
   return (
     <AppLauncherProvider>
-      <OverviewView />
+      <DashboardView />
     </AppLauncherProvider>
   );
 }

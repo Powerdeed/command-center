@@ -1,16 +1,21 @@
-export enum LIVE_STATUS_OPTIONS {
-  Live = "Live",
-  Development = "Development",
-  Restricted = "Restricted",
-  Maintenance = "Maintenance",
-}
+import { type UserPermission } from "@globals";
 
-export enum ACCESS_OPTIONS {
-  FullAccess = "Full Access",
-  ReadOnly = "Read Only",
-  Admin = "Admin",
-  Restricted = "Restricted",
-}
+export const LIVE_STATUS_OPTIONS = {
+  Live: "Live",
+  Development: "Development",
+  Restricted: "Restricted",
+  Maintenance: "Maintenance",
+} as const;
+
+export const ACCESS_OPTIONS = {
+  FullAccess: "Full Access",
+  ReadOnly: "Read Only",
+  Admin: "Admin",
+  Restricted: "Restricted",
+} as const;
+
+export type LiveStatus = (typeof LIVE_STATUS_OPTIONS)[keyof typeof LIVE_STATUS_OPTIONS];
+export type AccessLevel = (typeof ACCESS_OPTIONS)[keyof typeof ACCESS_OPTIONS];
 
 export type AppData = {
   id: string;
@@ -18,9 +23,11 @@ export type AppData = {
   title: string;
   description: string;
   teamsInCharge: string[];
-  yourAccess: ACCESS_OPTIONS[number];
+  yourAccess: AccessLevel;
+  requiredPermissions?: UserPermission[];
+  readOnlyPermissions?: UserPermission[];
   openTasks: number;
-  liveStatus: LIVE_STATUS_OPTIONS[number];
+  liveStatus: LiveStatus;
   recentActivities: {
     section: string;
     description: string;

@@ -3,7 +3,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function OverviewCard({
+export default function DashboardCard({
   title,
   value,
   actions,

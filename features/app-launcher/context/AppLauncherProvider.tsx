@@ -1,16 +1,18 @@
 "use client";
 
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useMemo, useState, useEffect } from "react";
 import { appLauncherSearchSortFilterContext } from "./AppLauncherSearchSortFilterContext";
 import { appLauncherAppDataContext } from "./AppLauncherAppDataContext";
-import { AppData } from "../types/AppData";
+import { ACCESS_OPTIONS, AppData } from "../types/AppData";
 import { appsData } from "../services/appData";
+import { getEffectivePermissions, useGlobals } from "@globals";
 
 export default function AppLauncherProvider({
   children,
 }: {
   children: ReactNode;
 }) {
+  const { globalStates } = useGlobals();
   const [apps, setApps] = useState<AppData[]>(appsData);
   const [selectedApp, setSelectedApp] = useState<AppData | null>(null);
   const [starredApps, setStarredApps] = useState<string[]>(() => {
@@ -69,6 +71,33 @@ export default function AppLauncherProvider({
   const [selectedStatus, setSelectedStatus] = useState("");
   const [selectedAccess, setSelectedAccess] = useState("");
   const [selectedSortOptions, setSelectedSortOptions] = useState<string[]>([]);
+  const permissionAwareApps = useMemo(() => {
+    const userPermissions = getEffectivePermissions(globalStates.user);
+
+    return apps.map((app) => {
+      const requiredPermissions = app.requiredPermissions ?? [];
+      const readOnlyPermissions = app.readOnlyPermissions ?? [];
+      const hasFullAccess =
+        requiredPermissions.length > 0 &&
+        requiredPermissions.every((permission) =>
+          userPermissions.includes(permission),
+        );
+      const hasReadOnlyAccess =
+        readOnlyPermissions.length > 0 &&
+        readOnlyPermissions.some((permission) =>
+          userPermissions.includes(permission),
+        );
+
+      if (hasFullAccess) {
+        return { ...app, yourAccess: ACCESS_OPTIONS.FullAccess };
+      }
+      if (hasReadOnlyAccess) {
+        return { ...app, yourAccess: ACCESS_OPTIONS.ReadOnly };
+      }
+
+      return { ...app, yourAccess: ACCESS_OPTIONS.Restricted };
+    });
+  }, [apps, globalStates.user]);
 
   return (
     <appLauncherSearchSortFilterContext.Provider
@@ -85,7 +114,7 @@ export default function AppLauncherProvider({
     >
       <appLauncherAppDataContext.Provider
         value={{
-          apps,
+          apps: permissionAwareApps,
           setApps,
           selectedApp,
           setSelectedApp,

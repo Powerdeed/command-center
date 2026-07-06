@@ -2,9 +2,9 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Header from "@features/overview/components/Header/Header";
+import Header from "@features/dashboard/components/Header/Header";
 import GreetingPrompts from "./GreetingPrompts";
-import OverviewCard from "./OverviewCard";
+import DashboardCard from "./DashboardCard";
 // import AppCard from "@features/app-launcher/components/AppCard";
 import useHome from "../hooks/useHome";
 
@@ -13,7 +13,7 @@ import AppsView from "@features/app-launcher/components/AppsView";
 import useAppLauncher from "@features/app-launcher/hooks/useAppLauncher";
 import AppInfo from "@features/app-launcher/components/AppInfo";
 
-export default function OverviewView() {
+export default function DashboardView() {
   const { state } = useAppLauncher();
   const { globalStates } = useGlobals();
   const { user } = globalStates;
@@ -50,11 +50,11 @@ export default function OverviewView() {
 
       <div className="grid grid-cols-6 gap-5">
         {Object.entries(actions.overview.overviewData).map(
-          ([overviewKey, overviewData]) => (
-            <OverviewCard
-              key={overviewKey}
-              title={overviewKey}
-              {...overviewData}
+          ([dashboardKey, dashboardData]) => (
+            <DashboardCard
+              key={dashboardKey}
+              title={dashboardKey}
+              {...dashboardData}
             />
           ),
         )}
