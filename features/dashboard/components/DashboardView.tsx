@@ -28,7 +28,7 @@ export default function DashboardView() {
           <div className="text-style__subheading">
             Welcome back,{" "}
             <strong className="text-(--secondary-blue)">
-              {user?.name || "User"}
+              {user?.name || "loading..."}
             </strong>
           </div>
 

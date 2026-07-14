@@ -88,11 +88,20 @@ export interface AccessProfile {
   directPermissions?: UserPermission[];
 }
 
+export interface UserTest {
+  _id: string;
+  name: string;
+  email: string;
+  roles: UserRole[];
+  keycloakUserId?: string;
+}
+
 export interface User {
   _id: string;
   name: string;
   email: string;
   role: UserRole;
+  roles?: UserRole[];
   permissions?: UserPermission[];
   employment?: EmploymentProfile;
   access?: AccessProfile;

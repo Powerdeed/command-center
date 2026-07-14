@@ -7,6 +7,7 @@ import {
   UnsavedChangesGuard,
   UnsavedChangesProvider,
 } from "@global-components/layout/unSavedChanges";
+import { AuthorizationProvider } from "./auth";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -51,14 +52,16 @@ export default function RootLayout({
       <body
         className={`relative ${plusJakartaSans.variable} ${openSans.variable} antialiased flex flex-col min-h-screen`}
       >
-        <GlobalProvider>
-          <UnsavedChangesProvider>
-            <SideBar />
+        <AuthorizationProvider>
+          <GlobalProvider>
+            <UnsavedChangesProvider>
+              <SideBar />
 
-            {children}
-            <UnsavedChangesGuard />
-          </UnsavedChangesProvider>
-        </GlobalProvider>
+              {children}
+              <UnsavedChangesGuard />
+            </UnsavedChangesProvider>
+          </GlobalProvider>
+        </AuthorizationProvider>
       </body>
     </html>
   );

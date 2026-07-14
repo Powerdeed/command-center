@@ -7,12 +7,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "@global-components/ui/Button";
 import { useGlobals } from "@globals";
 import { getAbbreviation } from "../../utils/getAbbreviation";
-import useAccount from "@app/account/hooks/useAccount";
+import { useAuth } from "@app/auth";
 
 export default function ProfileCard() {
-  const { loginActions } = useAccount();
+  const { authActions } = useAuth();
   const { globalStates } = useGlobals();
   const { user } = globalStates;
+
+  if (!user) return null;
 
   return (
     <div className="relative p-2.5 md:p-5 flex max-[1100px]:flex-col gap-2.5 md:gap-5 bg-white border border-(--terciary-grey) rounded-[10px] min-w-fit shadow-on-hover (--terciary-grey)]">
@@ -27,7 +29,7 @@ export default function ProfileCard() {
             <div className="absolute top-2.5 left-2.5 rounded-full w-35 h-35 border border-(--primary-yellow)"></div>
             <div className="absolute top-5 left-5 rounded-full w-30 h-30 border border-(--secondary-blue)"></div>
             <div className="text-white text-[40px] font-bold">
-              {getAbbreviation(user?.name || "User")}
+              {getAbbreviation(user.name)}
             </div>
           </div>
         </div>
@@ -35,15 +37,13 @@ export default function ProfileCard() {
 
       <div className="w-fit h-full vertical-layout__inner text-style__body max-[1100px]:text-center max-[1100px]:items-center max-[1100px]:w-full">
         <div className="text-style__heading text-(--primary-blue)">
-          {user?.name || "User name"}
+          {user.name}
         </div>
 
-        <div className="text-(--primary-grey)">
-          {user?.email || "User email"}
-        </div>
+        <div className="text-(--primary-grey)">{user.email}</div>
 
         <div className="text-style__small-text w-fit p-1 border border-(--secondary-blue) rounded-[10px] text-(--secondary-blue)">
-          {user?.role || "User role"}
+          {user.role}
         </div>
 
         <div className="horizontal-layout">
@@ -61,7 +61,7 @@ export default function ProfileCard() {
           <Button
             buttonText="Logout"
             buttonType="red"
-            clickAction={loginActions.handleLogout}
+            clickAction={authActions.handleLogout}
             className="w-fit"
           />
         </div>

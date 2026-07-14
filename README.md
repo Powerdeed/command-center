@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Powerdeed Command Center
 
-## Getting Started
+Internal operating shell for launching Powerdeed apps, viewing activity, and
+governing access.
 
-First, run the development server:
+## Authentication
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Command Center uses the same auth model as CMS:
+
+- auth-app starts Keycloak login
+- identity-service creates the HttpOnly session cookie
+- Command Center loads the current user from identity-service
+- API calls use `withCredentials: true`
+- logout revokes the identity-service session and redirects to Keycloak logout
+
+Command Center does not own password login or forgot-password routes.
+
+## Environment
+
+```txt
+NEXT_PUBLIC_COMMAND_API_BASE_URL=http://localhost:5500
+NEXT_PUBLIC_AUTH_API_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_AUTH_URL=http://localhost:3001/login
+NEXT_PUBLIC_KEYCLOAK_URL=http://localhost:8081
+NEXT_PUBLIC_KEYCLOAK_REALM=powerdeed
+NEXT_PUBLIC_KEYCLOAK_CLIENT_ID=command-center
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`NEXT_PUBLIC_AUTH_API_BASE_URL` must point to identity-service.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Clients
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```txt
+lib/api/axios.ts
+  Command/domain API client. Uses NEXT_PUBLIC_COMMAND_API_BASE_URL.
 
-## Learn More
+lib/api/identityAxios.ts
+  Identity/session API client. Uses NEXT_PUBLIC_AUTH_API_BASE_URL.
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Important Areas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```txt
+app/auth
+  Shared user/session hooks, permission helpers, logout, identity API calls.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+features/app-launcher
+  Internal app launcher and app visibility controls.
 
-## Deploy on Vercel
+features/security&access
+  Access governance screens.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+globals/context
+  App-wide UI and user state.
+```

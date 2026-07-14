@@ -25,8 +25,7 @@ export default function Profile() {
   const { user } = globalStates;
 
   const initials = useMemo(() => {
-    const fallbackName = "Command Operator";
-    const name = user?.name || fallbackName;
+    const name = user?.name || "";
 
     return name
       .split(" ")
@@ -36,6 +35,21 @@ export default function Profile() {
       .join("");
   }, [user?.name]);
 
+  if (!user) {
+    return (
+      <div
+        className={`p-5 duration-150 ${globalStates.sideBarOpen ? "pl-70" : "pl-20"}`}
+      >
+        <div className="vertical-layout__outer text-style__body">
+          <SectionTitle
+            title={PAGE_DATA.heading}
+            subtitle="Loading account..."
+          />
+        </div>
+      </div>
+    );
+  }
+
   const activeSince = user?.createdAt
     ? new Intl.DateTimeFormat("en", {
         month: "short",
@@ -43,7 +57,7 @@ export default function Profile() {
         year: "numeric",
       }).format(new Date(user.createdAt))
     : "Not recorded";
-  const displayName = user?.profile?.preferredName || user?.name;
+  const displayName = user.profile?.preferredName || user.name;
   const avatarImage = profileImage || user?.profile?.avatarUrl || "";
 
   return (
@@ -79,10 +93,10 @@ export default function Profile() {
                     </span>
                   </div>
                   <h1 className="text-style__heading text-(--primary-blue)">
-                    {displayName || "Command Operator"}
+                    {displayName}
                   </h1>
                   <p className="text-style__body text-(--primary-grey)">
-                    {user?.email || "operator@powerdeed.co.ke"}
+                    {user.email}
                   </p>
                   {(user?.profile?.jobTitle || user?.profile?.department) && (
                     <p className="text-style__small-text text-(--primary-grey)">
@@ -142,7 +156,7 @@ export default function Profile() {
             </div>
 
             <div className="grid grid-cols-2 gap-2.5">
-              <SignalCard label="Role" value={user?.role || "Admin"} />
+              <SignalCard label="Role" value={user.role} />
               <SignalCard label="Active since" value={activeSince} />
               <SignalCard label="Session" value="Protected" />
               <SignalCard label="Mode" value="Editorial ops" />
@@ -217,7 +231,7 @@ export default function Profile() {
             <div className="rounded-[10px] border border-(--primary-yellow)/60 bg-(--primary-yellow)/15 p-3">
               <div className="mb-1 flex items-center gap-2 text-style__big-text text-(--primary-blue)">
                 <FontAwesomeIcon icon={["fas", "shield-halved"]} />
-                {user?.role || "Admin"}
+                {user.role}
               </div>
               <p className="text-style__body text-(--primary-grey)">
                 This profile can display the current role, but cannot grant or
@@ -235,9 +249,9 @@ export default function Profile() {
 
         {editingProfile && (
           <ProfileEditor
-            name={user?.name || "Command Operator"}
-            email={user?.email || "operator@powerdeed.co.ke"}
-            role={user?.role || "Admin"}
+            name={user.name}
+            email={user.email}
+            role={user.role}
             initials={initials}
             profileImage={avatarImage}
             phone={user?.profile?.phone || ""}

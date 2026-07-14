@@ -1,4 +1,4 @@
-import { RoleId, User, UserPermission, UserRole } from "./types/user.type";
+import { RoleId, User, UserPermission, UserRole } from "../types/user.type";
 
 export const PERMISSIONS = {
   CMS_DASHBOARD_READ: "cms.dashboard.read",
@@ -79,12 +79,17 @@ export function getEffectivePermissions(user?: User | null): UserPermission[] {
   if (!user) return [];
 
   const accessPermissions =
-    user.access?.roles.flatMap((assignment) => accessRolePermissions[assignment.roleId] ?? []) ?? [];
+    user.access?.roles.flatMap(
+      (assignment) => accessRolePermissions[assignment.roleId] ?? [],
+    ) ?? [];
+  const legacyArrayRolePermissions =
+    user.roles?.flatMap((role) => legacyRolePermissions[role] ?? []) ?? [];
 
   return [
     ...new Set([
       ...accessPermissions,
       ...(legacyRolePermissions[user.role] ?? []),
+      ...legacyArrayRolePermissions,
       ...(user.permissions ?? []),
       ...(user.access?.directPermissions ?? []),
     ]),
