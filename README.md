@@ -19,14 +19,14 @@ Command Center does not own password login or forgot-password routes.
 
 ```txt
 NEXT_PUBLIC_COMMAND_API_BASE_URL=http://localhost:5500
-NEXT_PUBLIC_AUTH_API_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_IDENTITY_API_BASE_URL=http://localhost:3000
 NEXT_PUBLIC_AUTH_URL=http://localhost:3001/login
 NEXT_PUBLIC_KEYCLOAK_URL=http://localhost:8081
 NEXT_PUBLIC_KEYCLOAK_REALM=powerdeed
 NEXT_PUBLIC_KEYCLOAK_CLIENT_ID=command-center
 ```
 
-`NEXT_PUBLIC_AUTH_API_BASE_URL` must point to identity-service.
+`NEXT_PUBLIC_IDENTITY_API_BASE_URL` must point to identity-service.
 
 ## API Clients
 
@@ -35,7 +35,7 @@ lib/api/axios.ts
   Command/domain API client. Uses NEXT_PUBLIC_COMMAND_API_BASE_URL.
 
 lib/api/identityAxios.ts
-  Identity/session API client. Uses NEXT_PUBLIC_AUTH_API_BASE_URL.
+  Identity/session API client. Uses NEXT_PUBLIC_IDENTITY_API_BASE_URL.
 ```
 
 ## Important Areas
