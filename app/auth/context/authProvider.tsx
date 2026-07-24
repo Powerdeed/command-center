@@ -1,47 +1,24 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { ReactNode, useState } from "react";
 import { userContext } from "./userContext";
 import type { User } from "../types/user.type";
-import { getCurrentUser } from "../services/authUser";
-import { getAuthRedirect } from "../utils/client";
+import useUser from "../hooks/useUser";
+
+function AuthBootstrap() {
+  useUser();
+
+  return null;
+}
 
 export default function AuthorizationProvider({
   children,
 }: {
   children: ReactNode;
 }) {
-  const pathname = usePathname();
   const [user, setUser] = useState<User | null>(null);
   const [loadingUser, setLoadingUser] = useState(false);
   const [userError, setUserError] = useState("");
-
-  useEffect(() => {
-    if (pathname.startsWith("/login")) return;
-
-    const loadUser = async () => {
-      try {
-        setLoadingUser(true);
-        setUserError("");
-        const currentUser = await getCurrentUser();
-        setUser(currentUser);
-      } catch (error) {
-        setUser(null);
-        setUserError(
-          error instanceof Error
-            ? error.message
-            : "Unable to load the current user.",
-        );
-
-        window.location.href = getAuthRedirect();
-      } finally {
-        setLoadingUser(false);
-      }
-    };
-
-    void loadUser();
-  }, [pathname]);
 
   return (
     <userContext.Provider
@@ -54,6 +31,7 @@ export default function AuthorizationProvider({
         setUserError,
       }}
     >
+      <AuthBootstrap />
       {children}
     </userContext.Provider>
   );

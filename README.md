@@ -18,10 +18,9 @@ Command Center does not own password login or forgot-password routes.
 ## Environment
 
 ```txt
-NEXT_PUBLIC_COMMAND_API_BASE_URL=http://localhost:5500
 NEXT_PUBLIC_IDENTITY_API_BASE_URL=http://localhost:3000
 NEXT_PUBLIC_AUTH_URL=http://localhost:3001/login
-NEXT_PUBLIC_KEYCLOAK_URL=http://localhost:8081
+NEXT_PUBLIC_KEYCLOAK_URL=https://keycloak.powerdeed.co.ke
 NEXT_PUBLIC_KEYCLOAK_REALM=powerdeed
 NEXT_PUBLIC_KEYCLOAK_CLIENT_ID=command-center
 ```
@@ -31,12 +30,12 @@ NEXT_PUBLIC_KEYCLOAK_CLIENT_ID=command-center
 ## API Clients
 
 ```txt
-lib/api/axios.ts
-  Command/domain API client. Uses NEXT_PUBLIC_COMMAND_API_BASE_URL.
-
 lib/api/identityAxios.ts
   Identity/session API client. Uses NEXT_PUBLIC_IDENTITY_API_BASE_URL.
 ```
+
+Command Center does not currently have its own domain API. Add a command API
+client only when that backend exists.
 
 ## Important Areas
 
