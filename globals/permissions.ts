@@ -75,14 +75,27 @@ const accessRolePermissions: Partial<Record<RoleId, UserPermission[]>> = {
   "platform.security_admin": [PERMISSIONS.COMMAND_CENTER_PERMISSIONS_MANAGE],
 };
 
+const permissionValues = new Set<UserPermission>(Object.values(PERMISSIONS));
+
+function getPermissionsFromRole(role: string): UserPermission[] {
+  if (permissionValues.has(role as UserPermission)) {
+    return [role as UserPermission];
+  }
+
+  return accessRolePermissions[role as RoleId] ?? [];
+}
+
 export function getEffectivePermissions(user?: User | null): UserPermission[] {
   if (!user) return [];
 
   const accessPermissions =
     user.access?.roles.flatMap((assignment) => accessRolePermissions[assignment.roleId] ?? []) ?? [];
+  const keycloakRolePermissions =
+    user.keycloakRoles?.flatMap(getPermissionsFromRole) ?? [];
 
   return [
     ...new Set([
+      ...keycloakRolePermissions,
       ...accessPermissions,
       ...(legacyRolePermissions[user.role] ?? []),
       ...(user.permissions ?? []),
