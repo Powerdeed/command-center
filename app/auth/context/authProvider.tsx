@@ -3,13 +3,6 @@
 import { ReactNode, useState } from "react";
 import { userContext } from "./userContext";
 import type { User } from "../types/user.type";
-import useUser from "../hooks/useUser";
-
-function AuthBootstrap() {
-  useUser();
-
-  return null;
-}
 
 export default function AuthorizationProvider({
   children,
@@ -17,7 +10,7 @@ export default function AuthorizationProvider({
   children: ReactNode;
 }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loadingUser, setLoadingUser] = useState(false);
+  const [loadingUser, setLoadingUser] = useState(true);
   const [userError, setUserError] = useState("");
 
   return (
@@ -31,7 +24,6 @@ export default function AuthorizationProvider({
         setUserError,
       }}
     >
-      <AuthBootstrap />
       {children}
     </userContext.Provider>
   );

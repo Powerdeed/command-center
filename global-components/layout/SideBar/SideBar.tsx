@@ -7,7 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FEATURE_OPTIONS } from "../../../lib/constants/FEATURE_OPTIONS";
 import { IconName, IconPrefix } from "@fortawesome/fontawesome-svg-core";
 import { convertLabelToLink, convertLinkToLabel, useGlobals } from "@globals";
-import { COMPANY_NAME, PLATFORM_NAME } from "@lib";
+import { COMPANY_NAME } from "@lib";
+
+const titleMeta = {
+  title: "Command Center",
+};
 
 export default function SideBar() {
   const { globalStates } = useGlobals();
@@ -15,13 +19,20 @@ export default function SideBar() {
 
   return (
     <aside
-      className={`fixed left-0 top-0 flex flex-col duration-150 ${globalStates.sideBarOpen ? "w-65" : "w-15"} h-full bg-(--primary-blue) text-style__small-text text-(--terciary-grey)`}
+      className={`fixed left-0 top-0 flex flex-col ${globalStates.sideBarOpen ? "w-65" : "w-15"} h-full bg-(--primary-blue) text-style__small-text text-(--terciary-grey)`}
     >
-      <div className="p-2.5 pl-5 h-20 flex items-center border-b border-(--secondary-grey)">
+      <div className="p-2.5 pl-5 h-20 flex items-center gap-2.5 border-b border-(--secondary-grey)">
         {globalStates.sideBarOpen && (
-          <div className="flex-1 text-style__subheading text-(--terciary-grey)">
-            {PLATFORM_NAME}
+          <div className="w-10 h-10 bg-(--secondary-blue) rounded-[10px] grid items-center justify-center">
+            <FontAwesomeIcon
+              icon={["fas", "gear"]}
+              className="text-style__logo"
+            />
           </div>
+        )}
+
+        {globalStates.sideBarOpen && (
+          <h2 className="flex-1">{titleMeta.title}</h2>
         )}
 
         <FontAwesomeIcon

@@ -18,7 +18,7 @@ Command Center does not own password login or forgot-password routes.
 ## Environment
 
 ```txt
-NEXT_PUBLIC_IDENTITY_API_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_IDENTITY_API_BASE_URL=http://localhost:8080
 NEXT_PUBLIC_AUTH_URL=http://localhost:3001/login
 NEXT_PUBLIC_KEYCLOAK_URL=https://keycloak.powerdeed.co.ke
 NEXT_PUBLIC_KEYCLOAK_REALM=powerdeed

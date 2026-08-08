@@ -8,11 +8,13 @@ export default function Sort({
   selectedSortOptions,
   setSelectedSortOptions,
   dropdownWidth,
+  flipDirection,
 }: {
   sortOptions: string[];
   selectedSortOptions: string[];
   setSelectedSortOptions: Dispatch<SetStateAction<string[]>>;
   dropdownWidth?: string;
+  flipDirection?: boolean;
 }) {
   const [unselectedSortOptions, setUnSelectedSortOptions] =
     useState(sortOptions);
@@ -72,7 +74,7 @@ export default function Sort({
   return (
     <div
       ref={selectorRef}
-      className="relative horizontal-layout text-style__body"
+      className={`relative horizontal-layout text-style__body ${flipDirection && `flex-row-reverse`}`}
     >
       <div
         className="containerize hover:bg-(--terciary-grey)/30 rounded-[10px] p-1 cursor-pointer"

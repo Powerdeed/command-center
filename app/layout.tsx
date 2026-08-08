@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Open_Sans } from "next/font/google";
 import "./globals.css";
-import { GlobalProvider } from "@/globals";
-import SideBar from "@global-components/layout/SideBar/SideBar";
-import {
-  UnsavedChangesGuard,
-  UnsavedChangesProvider,
-} from "@global-components/layout/unSavedChanges";
+import AppShell from "@global-components/layout/AppShell";
 import { AuthorizationProvider } from "./auth";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -53,14 +48,7 @@ export default function RootLayout({
         className={`relative ${plusJakartaSans.variable} ${openSans.variable} antialiased flex flex-col min-h-screen`}
       >
         <AuthorizationProvider>
-          <GlobalProvider>
-            <UnsavedChangesProvider>
-              <SideBar />
-
-              {children}
-              <UnsavedChangesGuard />
-            </UnsavedChangesProvider>
-          </GlobalProvider>
+          <AppShell>{children}</AppShell>
         </AuthorizationProvider>
       </body>
     </html>
