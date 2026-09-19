@@ -58,7 +58,7 @@ export const appsData: AppData[] = [
       Editors: 12,
     },
 
-    type: "internal", // workers use day-to-day or for public
+    type: "internal",
     appUrl: "https://cms.powerdeed.co.ke",
   },
   {
@@ -80,7 +80,29 @@ export const appsData: AppData[] = [
       "Most viewed page": "projects page",
       "Content last edited": "2 days ago",
     },
-    type: "external", // workers use day-to-day or for public
+    type: "external",
     appUrl: "https://powerdeed.co.ke",
+  },
+  {
+    id: "3",
+    icon: "PTR-identity",
+    title: "Identity",
+    description: "Identity management",
+    teamsInCharge: ["hr", "it", "security"],
+    yourAccess: "Full Access",
+    requiredPermissions: [PERMISSIONS.COMMAND_CENTER_APPS_LAUNCH],
+    readOnlyPermissions: [PERMISSIONS.COMMAND_CENTER_APPS_LAUNCH],
+    openTasks: 0,
+    liveStatus: "Live",
+    recentActivities: [],
+    starred: true,
+    keyMetrics: {
+      "pending provisions": 1,
+      "Security alerts": 14,
+      "Archived employees": 1,
+      "Active sessions": 4,
+    },
+    type: "internal",
+    appUrl: "https://identity.powerdeed.co.ke",
   },
 ];
