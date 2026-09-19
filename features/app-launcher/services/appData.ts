@@ -103,6 +103,6 @@ export const appsData: AppData[] = [
       "Active sessions": 4,
     },
     type: "internal",
-    appUrl: "https://identity.powerdeed.co.ke",
+    appUrl: "https://account.powerdeed.co.ke",
   },
 ];
